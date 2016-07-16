@@ -1,6 +1,5 @@
 # Ansible GUI Manager
 
-![](./erb-logo.png)
 
 ## Pre-requirements
 Install latest Node js (6.x) & NPM (3.x)
@@ -72,15 +71,9 @@ externals: [
 You can find those lines in the file.
 
 
-## CSS Modules
+## Less
 
-This boilerplate out of the box is configured to use [css-modules](https://github.com/css-modules/css-modules).
-
-All `.css` file extensions will use css-modules unless it has `.global.css`.
-
-If you need global styles, stylesheets with `.global.css` will not go through the
-css-modules loader. e.g. `app.global.css`
-
+We use less for styling
 
 ## Package
 

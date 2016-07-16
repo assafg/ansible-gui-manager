@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 import React, {Component} from 'react';
 
@@ -10,7 +11,6 @@ export default class InventoryMenu extends Component {
 
   constructor(props) {
     super(props);
-
     const files = fs.readdirSync('./data');
     this.state = {
       files

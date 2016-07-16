@@ -4,7 +4,10 @@ import Project from './app/services/Project';
 let menu;
 let template;
 let mainWindow = null;
-const project = new Project();
+const dataDirPath = path.join(__dirname, 'data');
+if (!fs.existsSync(dataDirPath)) {
+  fs.mkdirSync(dataDirPath);
+}
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')(); // eslint-disable-line global-require
