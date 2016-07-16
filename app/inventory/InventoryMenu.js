@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 export default class InventoryMenu extends Component {
 
@@ -31,19 +31,30 @@ export default class InventoryMenu extends Component {
         </a>
       );
     }
-    return (<div>
-      <ul>
-      {
-        files.map((file) => {
-          return (
-            <li className="ui list" key={file} onClick={this.loadFile.bind(this, file)}>
-              <div className="item">{file}</div>
-            </li>
-          );
-        })
-      }
-      </ul>
-    </div>);
+    return (
+      <div className="ui list">
+        <div className="item">
+          <i className="folder icon"></i>
+          <div className="content">
+            <div className="header">Resources</div>
+            <div className="description">Ansible files</div>
+            <div className="list link">
+              {
+                files.map((file) => {
+                  return (
+                    <a className="item link" key={file} onClick={this.loadFile.bind(this, file)}>
+                      <i className="file icon"></i>
+                      <div className="content">
+                        <div className="header">{file}</div>
+                      </div>
+                    </a>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+      </div>);
   }
 }
 
