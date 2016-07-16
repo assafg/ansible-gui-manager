@@ -25,7 +25,6 @@ export default class Home extends Component {
   }
   handleClick(txt) {
     const { sendExampleMessage } = this.props;
-    console.log('click!');
     sendExampleMessage(`${txt}: ${new Date()}`);
   }
 

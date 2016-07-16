@@ -7,7 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import ini from 'ini';
 
-export default class InventoryView extends Component {
+class InventoryView extends Component {
   static propTypes = {
     file: React.PropTypes.string
   };
@@ -36,8 +36,8 @@ export default class InventoryView extends Component {
     const { fileName, doc } = this.state;
     let tree = [];
     if (doc) {
-      tree = Object.keys(doc).map((node, i) => {
-        return (<ul key={i}>
+      tree = Object.keys(doc).map((node, i) =>
+        <ul key={i}>
           <div>[{node}]</div>
           <div>
           {
@@ -45,10 +45,9 @@ export default class InventoryView extends Component {
           }
           </div>
         </ul>);
-      });
     }
     return (
-      <div class="highlight">
+      <div className="highlight">
         <pre>
           <code className="invFileView language-apacheconf">
             <h3>{fileName}</h3>

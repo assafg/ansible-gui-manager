@@ -1,7 +1,6 @@
 import path from 'path';
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const assets = 'assets';
 
 export default {
   module: {
@@ -12,10 +11,10 @@ export default {
     }, {
       test: /\.json$/,
       loader: 'json-loader'
-    },{
+    }, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style', 'css!')
-    },{
+    }, {
       test: /\.less$/,
       loader: ExtractTextPlugin.extract('style', 'css!less-loader')
     }]

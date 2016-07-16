@@ -1,12 +1,10 @@
 import { app, BrowserWindow, Menu, shell, ipcMain } from 'electron';
-import Project from './app/services/Project';
 import fs from 'fs';
 import path from 'path';
 
 let menu;
 let template;
 let mainWindow = null;
-const project = new Project();
 
 const dataDirPath = path.join(__dirname, 'data');
 if (!fs.existsSync(dataDirPath)) {
@@ -16,7 +14,6 @@ if (!fs.existsSync(dataDirPath)) {
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')(); // eslint-disable-line global-require
 }
-
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
@@ -29,14 +26,7 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   event.sender.send('asynchronous-reply', `${arg} ${new Date()}`);
 });
 
-ipcMain.on('synchronous-message', (event, arg) => {
-  event.returnValue = `${arg} ${new Date()}`;
-});
-
-
-
 app.on('ready', () => {
-  console.log('ready: ', __dirname);
   global.dirname = __dirname;
 
   mainWindow = new BrowserWindow({
@@ -123,7 +113,7 @@ app.on('ready', () => {
         selector: 'selectAll:'
       }]
     },
-      {
+    {
       label: 'View',
       submenu: (process.env.NODE_ENV === 'development') ? [{
         label: 'Reload',
@@ -261,5 +251,3 @@ app.on('ready', () => {
     mainWindow.setMenu(menu);
   }
 });
-
-ipcMain
