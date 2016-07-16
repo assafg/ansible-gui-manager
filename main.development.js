@@ -1,9 +1,13 @@
-import { app, BrowserWindow, Menu, shell } from 'electron';
+import { app, BrowserWindow, Menu, shell, ipcMain } from 'electron';
 import Project from './app/services/Project';
+import fs from 'fs';
+import path from 'path';
 
 let menu;
 let template;
 let mainWindow = null;
+const project = new Project();
+
 const dataDirPath = path.join(__dirname, 'data');
 if (!fs.existsSync(dataDirPath)) {
   fs.mkdirSync(dataDirPath);
@@ -17,6 +21,18 @@ if (process.env.NODE_ENV === 'development') {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
+
+/**
+ * Message passing between rendered and main processes
+ */
+ipcMain.on('asynchronous-message', (event, arg) => {
+  event.sender.send('asynchronous-reply', `${arg} ${new Date()}`);
+});
+
+ipcMain.on('synchronous-message', (event, arg) => {
+  event.returnValue = `${arg} ${new Date()}`;
+});
+
 
 
 app.on('ready', () => {
@@ -245,3 +261,5 @@ app.on('ready', () => {
     mainWindow.setMenu(menu);
   }
 });
+
+ipcMain

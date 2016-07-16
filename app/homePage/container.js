@@ -1,10 +1,16 @@
-import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Home from './Home';
+import * as HomeActions from './actions';
 
-export default class HomePage extends Component {
-  render() {
-    return (
-      <Home />
-    );
-  }
+function mapStateToProps(state) {
+  return {
+    message: state.getIn(['homePage', 'message'])
+  };
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(HomeActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
