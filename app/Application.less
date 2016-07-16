@@ -1,0 +1,145 @@
+@import "./variables";
+
+* {
+  //font-family: @font-family-base;
+}
+
+body {
+  //background-color: @main-background-color;
+  color: @font-color-base;
+  font-family: @font-family-base;
+}
+
+a {
+  .anchor-primary();
+}
+
+.anchor(@color: @anchor-color, @hover-color: @anchor-hover-color) {
+  color: @color;
+  &:hover {
+    color: @hover-color;
+  }
+  cursor: pointer;
+}
+
+.anchor-primary() {
+  .anchor();
+}
+
+.anchor-second() {
+  .anchor(@anchor-second-color, @anchor-hover-second-color);
+}
+
+.anchor-third() {
+  .anchor(@anchor-third-color, @anchor-hover-third-color);
+}
+
+.container {
+  padding: 10px;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Custom scroll bar START */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: #5f5f5f;
+  border: 0 none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f3f;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #323232;
+}
+::-webkit-scrollbar-track {
+  background: #ababab;
+  border: 0 none #ffffff;
+}
+::-webkit-scrollbar-track:hover {
+  background: #ababab;
+}
+::-webkit-scrollbar-track:active {
+  background: #ababab;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+/* Custom scroll bar END */
+
+
+.transition (@transition) {
+  transition:         @transition;
+  -webkit-transition: @transition;
+  -moz-transition:    @transition;
+  -ms-transition:     @transition;
+  -o-transition:      @transition;
+}
+
+.translate (@x, @y:0) {
+  transform:         translate(@x, @y);
+  -webkit-transform: translate(@x, @y);
+  -moz-transform: 	 translate(@x, @y);
+  -ms-transform: 		 translate(@x, @y);
+  -o-transform: 		 translate(@x, @y);
+}
+
+.skew (@deg:0deg) {
+  transform:         skew(@deg);
+  -webkit-transform: skew(@deg);
+  -moz-transform: 	 skew(@deg);
+  -ms-transform: 		 skew(@deg);
+  -o-transform: 		 skew(@deg);
+}
+
+.rotate (@deg:0deg) {
+  transform:         rotate(@deg);
+  -webkit-transform: rotate(@deg);
+  -moz-transform: 	 rotate(@deg);
+  -ms-transform: 		 rotate(@deg);
+  -o-transform: 		 rotate(@deg);
+}
+
+.animation (@name, @delay, @duration, @iteration-count) {
+  animation-name: @name;
+  -webkit-animation-name: @name;
+  animation-delay: @delay;
+  -webkit-animation-delay: @delay;
+  animation-duration: @duration;
+  -webkit-animation-duration: @duration;
+  animation-iteration-count: @iteration-count;
+  -webkit-animation-iteration-count: @iteration-count;
+}
+
+.ui.error.message {
+  box-shadow: none;
+}
+
+.pill() {
+  width: 30px;
+  height: 20px;
+  border-radius: 14px;
+}
+
+.center-absolute() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container{
+	width: 100%;
+}

@@ -1,15 +1,15 @@
+import './Home.less';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import styles from './Home.css';
 
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <div className={styles.container}>
+        <div className="container">
           <h2>Home</h2>
-          <Link to="/inventory">Inventory</Link>
+          <Link to="/inventory"><span className="ui button">Inventory</span></Link>
         </div>
       </div>
     );

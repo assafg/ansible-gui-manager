@@ -3,13 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Hello Electron React!</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../vendor/semantic.min.css" />
+    <link rel="stylesheet" href="../vendor/prism.css" />
     <script>
       (function() {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
         if (!process.env.HOT) {
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = '../dist/style.css';
+          link.href = '../dist/bundle.css';
+          document.write(link.outerHTML);
+        } else {
+          link.href = 'http://localhost:3000/dist/bundle.css';
           document.write(link.outerHTML);
         }
       }());
@@ -17,6 +23,7 @@
   </head>
   <body>
     <div id="root"></div>
+    <script src="../vendor/prism.js"></script>
     <script>
       (function() {
         const script = document.createElement('script');

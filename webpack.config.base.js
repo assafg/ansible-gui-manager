@@ -1,5 +1,8 @@
 import path from 'path';
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const assets = 'assets';
+
 export default {
   module: {
     loaders: [{
@@ -9,6 +12,12 @@ export default {
     }, {
       test: /\.json$/,
       loader: 'json-loader'
+    },{
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract('style', 'css!')
+    },{
+      test: /\.less$/,
+      loader: ExtractTextPlugin.extract('style', 'css!less-loader')
     }]
   },
   output: {
@@ -21,10 +30,13 @@ export default {
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
   },
   plugins: [
-
+    new ExtractTextPlugin('bundle.css', { allChunks: true })
   ],
   externals: [
     // put your node 3rd party libraries which can't be built with webpack here
     // (mysql, mongodb, and so on..)
-  ]
+  ],
+  cssnext: {
+    browsers: 'last 2 versions'
+  }
 };

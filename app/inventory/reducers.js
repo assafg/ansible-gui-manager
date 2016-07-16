@@ -1,9 +1,17 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './actions';
+import { actions } from './actions';
+import Immutable from 'immutable';
 
-export default function inventory(state = 0, action) {
+const InitialState = Immutable.fromJS({
+  inventory: {}
+});
+
+export default function inventory(state = InitialState, action) {
   switch (action.type) {
-    
+    case actions.LOAD_INVENTORY_FILE:
+      const newState = state.set('file', action.payload.file );
+      return newState;
     default:
       return state;
   }
+  return InitialState;
 }

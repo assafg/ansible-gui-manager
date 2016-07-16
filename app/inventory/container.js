@@ -5,7 +5,7 @@ import * as InventoryActions from './actions';
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    inventory: state.get('inventory')
   };
 }
 

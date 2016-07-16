@@ -1,18 +1,34 @@
+import './Inventory.less';
 import React, { Component } from 'react';
-import styles from './Inventory.css';
-
+import DocumentTitle from 'react-document-title';
+import InventoryView from './InventoryView';
+import InventoryMenu from './InventoryMenu';
 
 export default class Inventory extends Component {
+
+  static propTypes = {
+    inventory: React.PropTypes.object,
+    loadInventoryFile: React.PropTypes.func
+  };
+
   render() {
+    const { inventory, loadInventoryFile } = this.props;
+
+    const file = inventory.get('file');
+
     return (
-      <div>
-        <div className={styles.container}>
-          <h2>inventory</h2>
-          <p>
-            New Inventory
-          </p>
+      <DocumentTitle title="Inventory">
+        <div className="container">
+          <div className="ui grid">
+            <div className="four wide column">
+              <InventoryMenu loadInventoryFile={loadInventoryFile} />
+            </div>
+            <div className="twelve wide column">
+              <InventoryView file={file} />
+            </div>
+          </div>
         </div>
-      </div>
+      </DocumentTitle>
     );
   }
 }

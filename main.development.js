@@ -1,9 +1,10 @@
 import { app, BrowserWindow, Menu, shell } from 'electron';
+import Project from './app/services/Project';
 
 let menu;
 let template;
 let mainWindow = null;
-
+const project = new Project();
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')(); // eslint-disable-line global-require
@@ -16,6 +17,9 @@ app.on('window-all-closed', () => {
 
 
 app.on('ready', () => {
+  console.log('ready: ', __dirname);
+  global.dirname = __dirname;
+
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
@@ -39,9 +43,9 @@ app.on('ready', () => {
 
   if (process.platform === 'darwin') {
     template = [{
-      label: 'Electron',
+      label: 'Kandy',
       submenu: [{
-        label: 'About ElectronReact',
+        label: 'About Kandy',
         selector: 'orderFrontStandardAboutPanel:'
       }, {
         type: 'separator'
@@ -99,7 +103,8 @@ app.on('ready', () => {
         accelerator: 'Command+A',
         selector: 'selectAll:'
       }]
-    }, {
+    },
+      {
       label: 'View',
       submenu: (process.env.NODE_ENV === 'development') ? [{
         label: 'Reload',
