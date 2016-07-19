@@ -1,30 +1,30 @@
-import './Inventory.less';
+import './Project.less';
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
-import InventoryView from './InventoryView';
-import InventoryMenu from './InventoryMenu';
+import ProjectView from './ProjectView';
+import ProjectMenu from './ProjectMenu';
 
-export default class Inventory extends Component {
+export default class Project extends Component {
 
   static propTypes = {
     inventory: React.PropTypes.object,
-    loadInventoryFile: React.PropTypes.func
+    loadProjectFile: React.PropTypes.func
   };
 
   render() {
-    const { inventory, loadInventoryFile } = this.props;
+    const { inventory, loadProjectFile } = this.props;
 
     const file = inventory.get('file');
 
     return (
-      <DocumentTitle title="Inventory">
+      <DocumentTitle title="Project">
         <div className="container">
           <div className="ui grid">
             <div className="four wide column">
-              <InventoryMenu loadInventoryFile={loadInventoryFile} />
+              <ProjectMenu loadProjectFile={loadProjectFile} />
             </div>
             <div className="twelve wide column">
-              <InventoryView file={file} />
+              <ProjectView file={file} />
             </div>
           </div>
         </div>
