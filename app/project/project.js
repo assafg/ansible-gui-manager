@@ -7,14 +7,14 @@ import ProjectMenu from './ProjectMenu';
 export default class Project extends Component {
 
   static propTypes = {
-    inventory: React.PropTypes.object,
+    project: React.PropTypes.object,
     loadProjectFile: React.PropTypes.func
   };
 
   render() {
-    const { inventory, loadProjectFile } = this.props;
+    const { project, loadProjectFile } = this.props;
 
-    const file = inventory.get('file');
+    const file = project.get('file');
 
     return (
       <DocumentTitle title="Project">

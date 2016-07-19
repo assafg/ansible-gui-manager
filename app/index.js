@@ -9,7 +9,7 @@ import configureStore from './store/configureStore';
 import Immutable from 'immutable';
 
 const initialState = Immutable.fromJS({
-  inventory: {},
+  project: {},
   routing: {}
 });
 
