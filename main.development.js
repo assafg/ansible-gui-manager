@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, Menu, shell, ipcMain, remote } from 'electron';
 import fs from 'fs';
 import path from 'path';
 
@@ -58,11 +58,6 @@ app.on('ready', () => {
         selector: 'orderFrontStandardAboutPanel:'
       }, {
         type: 'separator'
-      }, {
-        label: 'Services',
-        submenu: [{
-          label: 'AAAAA'
-        }]
       }, {
         type: 'separator'
       }, {

@@ -1,6 +1,6 @@
 import './Project.less';
 import React, { Component } from 'react';
-import ServerName from './ServerName';
+import EditorLine from './EditorLine';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import fs from 'fs';
@@ -41,7 +41,7 @@ class ProjectView extends Component {
           <div>[{node}]</div>
           <div>
           {
-            Object.keys(doc[node]).map((n, j) => (<ServerName key={`${i}-${j}`} text={n} />))
+            Object.keys(doc[node]).map((n, j) => (<EditorLine key={`${i}-${j}`} text={n} />))
           }
           </div>
         </ul>);

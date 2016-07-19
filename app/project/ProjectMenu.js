@@ -4,15 +4,12 @@ import React, { Component } from 'react';
 export default class ProjectMenu extends Component {
 
   static propTypes = {
-    loadProjectFile: React.PropTypes.func
+    loadProjectFile: React.PropTypes.func,
+    projectTree: React.PropTypes.object
   };
 
   constructor(props) {
     super(props);
-    const files = fs.readdirSync('./data');
-    this.state = {
-      files
-    };
   }
 
   loadFile(file) {
@@ -20,15 +17,12 @@ export default class ProjectMenu extends Component {
     loadProjectFile(file);
   }
 
+
   render() {
-    const { files } = this.state;
-    if (files.length === 0) {
-      return (
-        <a>
-          <i className="">New</i>
-        </a>
-      );
-    }
+    const { projectTree } = this.props;
+
+    this.renderTree(projectTree);
+
     return (
       <div className="ui list">
         <div className="item">
@@ -38,7 +32,7 @@ export default class ProjectMenu extends Component {
             <div className="description">Ansible files</div>
             <div className="list link">
               {
-                files.map((file) =>
+                Object.files.map((file) =>
                   <a className="item link" key={file} onClick={this.loadFile.bind(this, file)}>
                     <i className="file icon"></i>
                     <div className="content">
