@@ -33,7 +33,7 @@ export default class Home extends Component {
       <div>
         <div className="container">
           <h2>Home</h2>
-          <Link to="/inventory"><span className="ui button">Inventory</span></Link>
+          <Link to="/inventory"><span className="ui button">Project</span></Link>
           <div
             className="ui button blue"
             onClick={this.handleClick.bind(this, 'My Message')}

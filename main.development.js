@@ -60,7 +60,9 @@ app.on('ready', () => {
         type: 'separator'
       }, {
         label: 'Services',
-        submenu: []
+        submenu: [{
+          label: 'AAAAA'
+        }]
       }, {
         type: 'separator'
       }, {
