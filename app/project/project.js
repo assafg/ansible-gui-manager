@@ -14,7 +14,7 @@ export default class Project extends Component {
   render() {
     const { project, loadProjectFile } = this.props;
 
-    const file = project.get('file');
+    // const file = project.get('file');
 
     return (
       <DocumentTitle title="Project">
@@ -24,7 +24,7 @@ export default class Project extends Component {
               <ProjectMenu loadProjectFile={loadProjectFile} />
             </div>
             <div className="twelve wide column">
-              <ProjectView file={file} />
+              <ProjectView doc={project.get('doc')} fileName={project.get('fileName')} />
             </div>
           </div>
         </div>

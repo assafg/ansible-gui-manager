@@ -23,17 +23,9 @@ class ProjectView extends Component {
     };
   }
 
-  componentWillReceiveProps(props) {
-    const { file } = props;
-    this.setState({ fileName: file });
-    if (file) {
-      const doc = ini.parse(fs.readFileSync(path.join('data', file), 'utf8'));
-      this.setState({ doc });
-    }
-  }
-
   render() {
-    const { fileName, doc } = this.state;
+    const { doc } = this.props;
+    const fileName = path.basename(this.props.fileName)
     let tree = [];
     if (doc) {
       tree = Object.keys(doc).map((node, i) =>

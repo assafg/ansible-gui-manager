@@ -1,6 +1,8 @@
 import fs from 'fs';
 import React, { Component } from 'react';
 
+const workDir =  './data'
+
 export default class ProjectMenu extends Component {
 
   static propTypes = {
@@ -9,7 +11,7 @@ export default class ProjectMenu extends Component {
 
   constructor(props) {
     super(props);
-    const files = fs.readdirSync('./data');
+    const files = fs.readdirSync(workDir);
     this.state = {
       files
     };
@@ -39,7 +41,7 @@ export default class ProjectMenu extends Component {
             <div className="list link">
               {
                 files.map((file) =>
-                  <a className="item link" key={file} onClick={this.loadFile.bind(this, file)}>
+                  <a className="item link" key={file} onClick={this.loadFile.bind(this, `${workDir}/${file}`)}>
                     <i className="file icon"></i>
                     <div className="content">
                       <div className="header">{file}</div>
