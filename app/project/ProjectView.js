@@ -1,6 +1,6 @@
 import './Project.less';
 import React, { Component } from 'react';
-import ServerName from './ServerName';
+import EditorElement from './EditorElement';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import fs from 'fs';
@@ -32,6 +32,11 @@ class ProjectView extends Component {
     }
   }
 
+  deleteItem(itemToDelete) {
+    console.log(itemToDelete);
+
+  }
+
   render() {
     const { fileName, doc } = this.state;
     let tree = [];
@@ -41,7 +46,10 @@ class ProjectView extends Component {
           <div>[{node}]</div>
           <div>
           {
-            Object.keys(doc[node]).map((n, j) => (<ServerName key={`${i}-${j}`} text={n} />))
+            Object.keys(doc[node]).map((n, j) =>
+              (<EditorElement
+                onDelete={this.deleteItem.bind(this, n)} key={`${i}-${j}`} text={n}
+              />))
           }
           </div>
         </ul>);
